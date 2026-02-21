@@ -15,6 +15,13 @@ const express = require('express');
 const healthRoutes = require('./health.routes');
 const authRoutes = require('./auth.routes');
 const dashboardRoutes = require('./dashboard.routes');
+const vehicleRoutes = require('./vehicle.routes');
+
+const tripRoutes = require('./trip.routes');
+const driverRoutes = require('./driver.routes');
+const maintenanceRoutes = require('./maintenance.routes');
+const fuelRoutes = require('./fuel.routes');
+const financeRoutes = require('./finance.routes');
 
 const router = express.Router();
 
@@ -22,8 +29,11 @@ const router = express.Router();
 router.use('/health', healthRoutes);
 router.use('/auth', authRoutes);
 router.use('/dashboard', dashboardRoutes);
-// router.use('/vehicles', vehicleRoutes);
-// router.use('/drivers',  driverRoutes);
-// router.use('/trips',    tripRoutes);
+router.use('/vehicles', vehicleRoutes);
+router.use('/drivers', driverRoutes);
+router.use('/trips', tripRoutes);
+router.use('/maintenance', maintenanceRoutes);
+router.use('/fuel', fuelRoutes);
+router.use('/finance', financeRoutes);
 
 module.exports = router;

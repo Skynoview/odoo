@@ -11,6 +11,8 @@ import NotFoundPage from '@/pages/NotFoundPage';
 
 // Role dashboards
 import ManagerDashboard from '@/pages/dashboards/CommandCenter';
+import VehicleRegistry from '@/pages/dashboards/VehicleRegistry';
+import MaintenanceLogs from '@/pages/dashboards/MaintenanceLogs';
 import DispatcherDashboard from '@/pages/dashboards/DispatcherDashboard';
 import SafetyDashboard from '@/pages/dashboards/SafetyDashboard';
 import FinanceDashboard from '@/pages/dashboards/FinanceDashboard';
@@ -36,6 +38,30 @@ function AppRouter() {
                 }
             />
             <Route
+                path="/manager-dashboard/vehicles"
+                element={
+                    <ProtectedRoute roles={['FleetManager']}>
+                        <VehicleRegistry />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/manager-dashboard/maintenance"
+                element={
+                    <ProtectedRoute roles={['FleetManager']}>
+                        <MaintenanceLogs />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/manager-dashboard/finance"
+                element={
+                    <ProtectedRoute roles={['FleetManager', 'FinancialAnalyst']}>
+                        <FinanceDashboard />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
                 path="/dispatcher-dashboard"
                 element={
                     <ProtectedRoute roles={['Dispatcher']}>
@@ -44,9 +70,9 @@ function AppRouter() {
                 }
             />
             <Route
-                path="/safety-dashboard"
+                path="/manager-dashboard/safety"
                 element={
-                    <ProtectedRoute roles={['SafetyOfficer']}>
+                    <ProtectedRoute roles={['FleetManager', 'SafetyOfficer']}>
                         <SafetyDashboard />
                     </ProtectedRoute>
                 }

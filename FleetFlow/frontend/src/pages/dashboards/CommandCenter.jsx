@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { dashboardApi } from '@/api/dashboard.api';
 import DashboardShell from './DashboardShell';
@@ -242,14 +243,55 @@ function CommandCenter() {
                     </div>
                 )}
 
-                {/* Extra space for more widgets later */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 opacity-40">
-                    <div className="lg:col-span-2 h-64 bg-slate-900/50 border border-slate-800 border-dashed rounded-3xl flex items-center justify-center">
-                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Live Telemetry Map Incoming</span>
-                    </div>
-                    <div className="h-64 bg-slate-900/50 border border-slate-800 border-dashed rounded-3xl flex items-center justify-center">
-                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Driver Feed Syncing</span>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <Link to="/manager-dashboard/maintenance" className="h-64 group relative overflow-hidden bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-pink-500/50 rounded-3xl p-8 flex flex-col justify-end transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        <div className="absolute inset-0 bg-gradient-to-t from-pink-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute -right-10 -top-10 w-40 h-40 bg-pink-500/10 rounded-full blur-3xl group-hover:bg-pink-500/20 transition-colors" />
+
+                        <div className="relative z-10">
+                            <div className="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Service Bay</h3>
+                            <p className="text-slate-400 text-sm">Monitor repair costs, schedule maintenance, and log active tickets.</p>
+                        </div>
+                    </Link>
+                    <Link to="/manager-dashboard/finance" className="h-64 group relative overflow-hidden bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-emerald-500/50 rounded-3xl p-8 flex flex-col justify-end transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute -right-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-colors" />
+
+                        <div className="relative z-10 w-full">
+                            <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Finance & Fuel</h3>
+                            <p className="text-slate-400 text-sm">Analyze operational expenditures vs. trip revenues.</p>
+                        </div>
+                    </Link>
+                    <Link to="/manager-dashboard/vehicles" className="h-64 group relative overflow-hidden bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-indigo-500/50 rounded-3xl p-8 flex flex-col justify-end transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors" />
+
+                        <div className="relative z-10">
+                            <div className="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Vehicle Registry</h3>
+                            <p className="text-slate-400 text-sm">Manage fleet assets, add new vehicles, and update configurations.</p>
+                        </div>
+                    </Link>
+                    <Link to="/manager-dashboard/safety" className="h-64 group relative overflow-hidden bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-blue-500/50 rounded-3xl p-8 flex flex-col justify-end transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute -right-10 -top-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
+
+                        <div className="relative z-10 w-full">
+                            <div className="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Driver Safety</h3>
+                            <p className="text-slate-400 text-sm">Monitor incident reports and track completion rates.</p>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </DashboardShell>
